@@ -1,4 +1,4 @@
-// Copyright (c) Stride contributors (https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
+// Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System;
 using System.ComponentModel;
@@ -8,7 +8,6 @@ using Stride.Core.Mathematics;
 using Stride.Graphics;
 using Stride.Rendering.Compositing;
 using Stride.Rendering.Materials;
-using Stride.Rendering.SubsurfaceScattering;
 
 namespace Stride.Rendering.Images
 {
@@ -39,8 +38,16 @@ namespace Stride.Rendering.Images
         /// </summary>
         public PostProcessingEffects()
         {
-            Outline = new Outline {Enabled = false};
-            Fog = new Fog {Enabled = false};
+            Outline = new Outline
+            {
+                Enabled = false
+            };
+
+            Fog = new Fog
+            {
+                Enabled = false
+            };
+
             AmbientOcclusion = new AmbientOcclusion();
             LocalReflections = new LocalReflections();
             DepthOfField = new DepthOfField();
@@ -77,7 +84,6 @@ namespace Stride.Rendering.Images
         [Category]
         public Outline Outline { get; private set; }
 
-        /// <summary>
         /// Gets the fog effect.
         /// </summary>
         [DataMember(7)]
@@ -201,7 +207,6 @@ namespace Stride.Rendering.Images
 
             Outline = ToLoadAndUnload(Outline);
             Fog = ToLoadAndUnload(Fog);
-
             AmbientOcclusion = ToLoadAndUnload(AmbientOcclusion);
             LocalReflections = ToLoadAndUnload(LocalReflections);
             DepthOfField = ToLoadAndUnload(DepthOfField);
